@@ -1,0 +1,12 @@
+flowchart LR
+    Dashboard[Browser dashboard] -->|REST API + polling| API[Fastify API]
+    API --> Store[In-memory monitor store]
+    API --> Scheduler[Monitor scheduler]
+    Scheduler -->|Independent timer A| CheckA[Check website A]
+    Scheduler -->|Independent timer B| CheckB[Check website B]
+    Scheduler -->|Independent timer N| CheckN[Check website N]
+    CheckA -->|Concurrent HTTP GET| External[Websites and APIs]
+    CheckB -->|Concurrent HTTP GET| External
+    CheckN -->|Concurrent HTTP GET| External
+    External -->|Status, latency, errors| Store
+    Store -->|Latest state and history| Dashboard

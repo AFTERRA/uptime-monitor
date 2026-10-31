@@ -1,0 +1,10 @@
+services:
+  uptime-monitor:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      REQUEST_TIMEOUT_MS: 5000
+      MAX_HISTORY: 30
+      MAX_MONITORS: 100
+    restart: unless-stopped

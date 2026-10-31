@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Monitor multiple websites and APIs from one live dashboard.">
+  <title>Pulseboard · Uptime Monitor</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">⌁</span><span>PULSE<strong>BOARD</strong></span></a>
+    <div class="runtime"><span class="live-dot"></span> MONITORING LOCALLY</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">MULTI-SITE UPTIME MONITORING</p><h1>Every site.<br><span>One clear view.</span></h1><p class="hero-copy">Track availability and response times across all your websites and APIs, at the same time.</p></div>
+      <div class="hero-badge"><span class="radar">⌁</span><p>Independent checks<br>Continuous insight</p></div>
+    </section>
+
+    <section class="stats" aria-label="Monitoring summary">
+      <article><span>MONITORED SITES</span><strong id="stat-total">0</strong></article>
+      <article><span>ONLINE</span><strong id="stat-up" class="green">0</strong></article>
+      <article><span>OFFLINE</span><strong id="stat-down" class="red">0</strong></article>
+    </section>
+
+    <section class="add-panel">
+      <div class="section-heading"><span class="step">01</span><div><h2>Add a website</h2><p>Each site runs on its own independent schedule.</p></div></div>
+      <form id="add-form">
+        <label class="name-field"><span>DISPLAY NAME</span><input id="name" required maxlength="80" placeholder="My website"></label>
+        <label class="url-field"><span>WEBSITE OR API URL</span><input id="url" required type="text" inputmode="url" autocomplete="url" placeholder="example.com or https://example.com"></label>
+        <label class="interval-field"><span>CHECK EVERY</span><select id="interval"><option value="10">10 seconds</option><option value="30" selected>30 seconds</option><option value="60">1 minute</option><option value="300">5 minutes</option></select></label>
+        <button class="button primary" type="submit"><span>＋</span> Start monitoring</button>
+      </form>
+      <div class="quick-demo"><span>TRY A DEMO:</span><button data-demo="healthy">Healthy site</button><button data-demo="slow">Slow site</button><button data-demo="failing">Failing site</button></div>
+    </section>
+
+    <section class="monitors-section">
+      <div class="list-heading"><div><span class="step">02</span><h2>Your monitors</h2></div><span id="monitor-count" class="count">0 SITES</span></div>
+      <div id="monitor-grid" class="monitor-grid"><div class="empty-state"><span>⌁</span><h3>No websites monitored yet</h3><p>Add a URL above or start with a demo site.</p></div></div>
+    </section>
+  </main>
+
+  <footer><span>PULSEBOARD</span><span>NODE.JS · TYPESCRIPT · CONCURRENT CHECKS</span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
